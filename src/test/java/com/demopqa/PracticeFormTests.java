@@ -11,15 +11,12 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTests extends TestBase{
-    @BeforeEach
-    void setUp() {
-        open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-    }
 
     @Test
     void practiceFormSuccessTest() {
+        open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         $("#firstName").setValue("Василиса");
         $("#lastName").setValue("Премудрая");
@@ -51,5 +48,20 @@ public class PracticeFormTests extends TestBase{
         $(".table-responsive").$(byText("Picture")).sibling(0).shouldHave(text("test.jpg"));
         $(".table-responsive").$(byText("Address")).sibling(0).shouldHave(text("Лукоморье, Дуб Зеленый, 1"));
         $(".table-responsive").$(byText("State and City")).sibling(0).shouldHave(text("NCR Delhi"));
+    }
+    @Test
+    void practiceFormSuccessMinimalTest() {
+        open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        $("#firstName").setValue("Василиса");
+        $("#lastName").setValue("Премудрая");
+        $("#userNumber").setValue("1234567890");
+        $("#genterWrapper").$(byText("Female")).click();
+        $("#submit").click();
+        $(".modal-dialog").should(Condition.appear);
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text("Василиса"), text("Премудрая"), text("1234567890"), text("Female"));
     }
 }
