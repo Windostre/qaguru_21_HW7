@@ -1,4 +1,4 @@
-package com.demopqa;
+package com.demopqa.tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;

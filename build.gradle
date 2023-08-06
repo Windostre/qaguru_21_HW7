@@ -31,3 +31,7 @@ test {
     systemProperty "chromeoptoions.prefs","intl.accept_languages=ru" //для запуска браузера на другом языке
     useJUnitPlatform()
 }
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
