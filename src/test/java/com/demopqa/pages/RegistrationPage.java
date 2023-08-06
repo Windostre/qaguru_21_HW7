@@ -31,73 +31,89 @@ public class RegistrationPage {
     SelenideElement stateCityWrapper = $("#stateCity-wrapper");
 
 
-    public void setFirstName(String firstName) {
+    public RegistrationPage setFirstName(String firstName) {
         firstNameInput.setValue(firstName);
+        return this;
     }
 
-    public void setLastName(String lastName) {
+    public RegistrationPage setLastName(String lastName) {
         lastNameInput.setValue(lastName);
+        return this;
     }
 
-    public void setEmail(String email) {
+    public RegistrationPage setEmail(String email) {
         emailInput.setValue(email);
+        return this;
     }
 
-    public void setUserNumber(String userNumber) {
+    public RegistrationPage setUserNumber(String userNumber) {
         userNumberInput.setValue(userNumber);
+        return this;
     }
 
-    public void selectGender(String gender) {
+    public RegistrationPage selectGender(String gender) {
         genderRadioButton.$(byText(gender)).click();
+        return this;
     }
 
-    public void setSubject(String subject) {
+    public RegistrationPage setSubject(String subject) {
         subjectInput.setValue(subject).pressEnter();
+        return this;
     }
 
-    public void setHobby(String hobby) {
+    public RegistrationPage setHobby(String hobby) {
         hobbiesCheckBox.$(byText(hobby)).click();
+        return this;
     }
 
-    public void setAddress(String address) {
+    public RegistrationPage setAddress(String address) {
         addressInput.setValue(address);
+        return this;
     }
 
-    public void submitForm() {
+    public RegistrationPage submitForm() {
         submitButton.click();
+        return this;
     }
 
-    public void waitModalWindowIsOpened() {
+    public RegistrationPage waitModalWindowIsOpened() {
         modalWindow.should(Condition.appear);
         modalWindowHeader.shouldHave(text("Thanks for submitting the form"));
+        return this;
     }
 
-    public void checkModalWindowHasText(List <String> texts) {
+    public RegistrationPage checkModalWindowHasText(List <String> texts) {
         texts.forEach(values -> tableInModalWindow.shouldHave(text(values)));
+        return this;
     }
 
-    public void checkValueNextToColumnInTableInModalWindow(String columnName, String expectedValue) {
+    public RegistrationPage checkValueNextToColumnInTableInModalWindow(String columnName, String expectedValue) {
         tableInModalWindow.$(byText(columnName)).sibling(0)
                 .shouldHave(text(expectedValue));
+        return this;
     }
 
-    public void waitUntilRegistrationPageIsLoaded() {
+    public RegistrationPage waitUntilRegistrationPageIsLoaded() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        return this;
     }
 
-    public void uploadFile(String fileName) {
+    public RegistrationPage uploadFile(String fileName) {
         $("#uploadPicture").uploadFromClasspath("files/jpg/" + fileName);
+        return this;
     }
 
-    public void selectState(String state) {
+    public RegistrationPage selectState(String state) {
        stateDropDown.click();
         stateCityWrapper.$(byText(state)).click();
+        return this;
     }
 
-    public void selectCity(String city) {
+    public RegistrationPage selectCity(String city) {
         cityDropDown.click();
         stateCityWrapper.$(byText(city)).click();
+        return this;
     }
 }

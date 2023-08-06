@@ -13,26 +13,32 @@ public class TextBoxPage {
     SelenideElement submitButton = $("#submit");
     SelenideElement textBox =  $("#output");
 
-    public void setFullName(String fullName) {
+    public TextBoxPage setFullName(String fullName) {
         fullNameInput.setValue(fullName);
+        return this;
     }
 
-    public void setEmail(String email) {
+    public TextBoxPage setEmail(String email) {
         emailInput.setValue(email);
+        return this;
     }
 
-    public void setCurrentAddress(String address) {
+    public TextBoxPage setCurrentAddress(String address) {
         currentAddressInput.setValue(address);
+        return this;
     }
-    public void setPermanentAddress(String address) {
+    public TextBoxPage setPermanentAddress(String address) {
         permanentAddressInput.setValue(address);
+        return this;
     }
 
-    public void submitForm() {
+    public TextBoxPage submitForm() {
         submitButton.click();
+        return this;
     }
 
-    public void checkThatTextBoxHasText(String expectedText) {
+    public TextBoxPage checkThatTextBoxHasText(String expectedText) {
         textBox.shouldHave(Condition.text(expectedText));
+        return this;
     }
 }

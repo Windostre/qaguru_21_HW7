@@ -16,16 +16,15 @@ public class TextBoxTests extends TestBase{
     @Test
     void testBoxTests() {
         open(textBoxPageUrl);
-        textBoxPage.setFullName("Sveta Ivanova");
-        textBoxPage.setEmail("ivanova@somemail.ru");
-        textBoxPage.setCurrentAddress("Pushkina ul., 34");
-        textBoxPage.setPermanentAddress("Gogol-Mogol ul., 16a");
-        textBoxPage.submitForm();
-        textBoxPage.checkThatTextBoxHasText("Sveta Ivanova");
-        textBoxPage.checkThatTextBoxHasText("ivanova@somemail.ru");
-        textBoxPage.checkThatTextBoxHasText("Pushkina ul., 34");
-        textBoxPage.checkThatTextBoxHasText("Gogol-Mogol ul., 16a");
-
+        textBoxPage.setFullName("Sveta Ivanova")
+        .setEmail("ivanova@somemail.ru")
+        .setCurrentAddress("Pushkina ul., 34")
+        .setPermanentAddress("Gogol-Mogol ul., 16a")
+        .submitForm()
+        .checkThatTextBoxHasText("Sveta Ivanova")
+        .checkThatTextBoxHasText("ivanova@somemail.ru")
+        .checkThatTextBoxHasText("Pushkina ul., 34")
+        .checkThatTextBoxHasText("Gogol-Mogol ul., 16a");
 
     }
 }
