@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Selenide.*;
  * <a href="https://demoqa.com/automation-practice-form">...</a>
  */
 public class RegistrationPage {
+    CalendarComponent calendar = new CalendarComponent();
     SelenideElement firstNameInput = $("#firstName");
     SelenideElement lastNameInput = $("#lastName");
     SelenideElement emailInput = $("#userEmail");
@@ -29,6 +30,7 @@ public class RegistrationPage {
     SelenideElement stateDropDown =  $("#state");
     SelenideElement cityDropDown =  $("#city");
     SelenideElement stateCityWrapper = $("#stateCity-wrapper");
+    SelenideElement dateOfBirthInput = $("#dateOfBirthInput");
 
 
     public RegistrationPage setFirstName(String firstName) {
@@ -114,6 +116,12 @@ public class RegistrationPage {
     public RegistrationPage selectCity(String city) {
         cityDropDown.click();
         stateCityWrapper.$(byText(city)).click();
+        return this;
+    }
+
+    public RegistrationPage setBirthDate(String day, String month, String year) {
+        dateOfBirthInput.click();
+        calendar.setDate(day, month, year);
         return this;
     }
 }

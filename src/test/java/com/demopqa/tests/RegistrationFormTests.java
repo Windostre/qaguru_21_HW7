@@ -22,12 +22,9 @@ public class RegistrationFormTests extends TestBase{
                 .setLastName("Премудрая")
                 .setEmail("pretty_vasya@mail.com")
                 .setUserNumber("1234567890")
-                .selectGender("Female");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("July");
-        $(".react-datepicker__year-select").selectOption("1989");
-        $(".react-datepicker__day--030:not(.react-datepicker__day--outside-month)").click();
-        registrationPage.setSubject("Hindi")
+                .selectGender("Female")
+                .setBirthDate("30", "July", "1989")
+                .setSubject("Hindi")
                 .setHobby("Sports")
                 .uploadFile("test.jpg")
                 .setAddress("Лукоморье, Дуб Зеленый, 1")
