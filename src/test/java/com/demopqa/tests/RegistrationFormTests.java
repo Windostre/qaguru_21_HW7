@@ -5,20 +5,24 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.open;
-
 public class RegistrationFormTests extends TestBase{
     private RegistrationPage registrationPage = new RegistrationPage();
     private String registrationPageUrl = "/automation-practice-form";
+    String firstName = "Василиса",
+            lastName = "Премудрая",
+            email = "pretty_vasya@mail.com";
 
     @Test
     void registrationFormSuccessTest() {
+//        String firstName = "Василиса",
+//                lastName = "Премудрая",
+//                email = "pretty_vasya@mail.com";
         registrationPage
                 .openPage(registrationPageUrl)
                 .waitUntilRegistrationPageIsLoaded()
-                .setFirstName("Василиса")
-                .setLastName("Премудрая")
-                .setEmail("pretty_vasya@mail.com")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(email)
                 .setUserNumber("1234567890")
                 .selectGender("Female")
                 .setBirthDate("30", "July", "1989")
@@ -31,7 +35,7 @@ public class RegistrationFormTests extends TestBase{
                 .submitForm()
                 .waitModalWindowIsOpened()
                 .checkValueNextToColumnInTableInModalWindow("Student Name", "Василиса Премудрая")
-                .checkValueNextToColumnInTableInModalWindow("Student Email", "pretty_vasya@mail.com")
+                .checkValueNextToColumnInTableInModalWindow("Student Email", email)
                 .checkValueNextToColumnInTableInModalWindow("Gender", "Female")
                 .checkValueNextToColumnInTableInModalWindow("Mobile", "1234567890")
                 .checkValueNextToColumnInTableInModalWindow("Date of Birth", "30 July,1989")
