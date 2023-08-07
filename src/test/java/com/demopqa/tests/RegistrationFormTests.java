@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationFormTests extends TestBase{
     private RegistrationPage registrationPage = new RegistrationPage();
@@ -15,8 +13,8 @@ public class RegistrationFormTests extends TestBase{
 
     @Test
     void registrationFormSuccessTest() {
-        open(registrationPageUrl);
         registrationPage
+                .openPage(registrationPageUrl)
                 .waitUntilRegistrationPageIsLoaded()
                 .setFirstName("Василиса")
                 .setLastName("Премудрая")

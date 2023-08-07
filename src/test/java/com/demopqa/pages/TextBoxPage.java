@@ -1,9 +1,11 @@
 package com.demopqa.pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class TextBoxPage {
     SelenideElement fullNameInput =  $("#userName");
@@ -13,6 +15,12 @@ public class TextBoxPage {
     SelenideElement submitButton = $("#submit");
     SelenideElement textBox =  $("#output");
 
+    public TextBoxPage openPage(String url) {
+        Selenide.open(url);
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        return this;
+    }
     public TextBoxPage setFullName(String fullName) {
         fullNameInput.setValue(fullName);
         return this;

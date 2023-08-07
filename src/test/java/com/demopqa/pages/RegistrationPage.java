@@ -1,6 +1,7 @@
 package com.demopqa.pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import java.util.List;
@@ -95,9 +96,13 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage waitUntilRegistrationPageIsLoaded() {
+    public RegistrationPage openPage(String url) {
+        Selenide.open(url);
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
+        return this;
+    }
+    public RegistrationPage waitUntilRegistrationPageIsLoaded() {
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         return this;
     }
@@ -109,7 +114,7 @@ public class RegistrationPage {
 
     public RegistrationPage selectState(String state) {
        stateDropDown.click();
-        stateCityWrapper.$(byText(state)).click();
+       stateCityWrapper.$(byText(state)).click();
         return this;
     }
 
