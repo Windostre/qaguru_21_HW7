@@ -30,30 +30,31 @@ public class RegistrationFormTests extends TestBase{
                 .selectCity("Delhi")
                 .submitForm()
                 .waitModalWindowIsOpened()
-        .checkValueNextToColumnInTableInModalWindow("Student Name", "Василиса Премудрая")
-        .checkValueNextToColumnInTableInModalWindow("Student Email", "pretty_vasya@mail.com")
-        .checkValueNextToColumnInTableInModalWindow("Gender", "Female")
-        .checkValueNextToColumnInTableInModalWindow("Mobile", "1234567890")
-        .checkValueNextToColumnInTableInModalWindow("Date of Birth", "30 July,1989")
-        .checkValueNextToColumnInTableInModalWindow("Subjects", "Hindi")
-        .checkValueNextToColumnInTableInModalWindow("Hobbies", "Sports")
-        .checkValueNextToColumnInTableInModalWindow("Picture", "test.jpg")
-        .checkValueNextToColumnInTableInModalWindow("Address", "Лукоморье, Дуб Зеленый, 1")
-        .checkValueNextToColumnInTableInModalWindow("State and City", "NCR Delhi");
+                .checkValueNextToColumnInTableInModalWindow("Student Name", "Василиса Премудрая")
+                .checkValueNextToColumnInTableInModalWindow("Student Email", "pretty_vasya@mail.com")
+                .checkValueNextToColumnInTableInModalWindow("Gender", "Female")
+                .checkValueNextToColumnInTableInModalWindow("Mobile", "1234567890")
+                .checkValueNextToColumnInTableInModalWindow("Date of Birth", "30 July,1989")
+                .checkValueNextToColumnInTableInModalWindow("Subjects", "Hindi")
+                .checkValueNextToColumnInTableInModalWindow("Hobbies", "Sports")
+                .checkValueNextToColumnInTableInModalWindow("Picture", "test.jpg")
+                .checkValueNextToColumnInTableInModalWindow("Address", "Лукоморье, Дуб Зеленый, 1")
+                .checkValueNextToColumnInTableInModalWindow("State and City", "NCR Delhi");
 
     }
 
     @Test
     void registrationFormSuccessMinimalTest() {
-        open(registrationPageUrl);
-        registrationPage.waitUntilRegistrationPageIsLoaded();
-        registrationPage.setFirstName("Василиса");
-        registrationPage.setLastName("Премудрая");
-        registrationPage.setEmail("pretty_vasya@mail.com");
-        registrationPage.setUserNumber("1234567890");
-        registrationPage.selectGender("Female");
-        registrationPage.submitForm();
-        registrationPage.waitModalWindowIsOpened();
-        registrationPage.checkModalWindowHasText(List.of("Василиса", "Премудрая", "1234567890", "Female"));
+        registrationPage
+                .openPage(registrationPageUrl)
+                .waitUntilRegistrationPageIsLoaded()
+                .setFirstName("Василиса")
+                .setLastName("Премудрая")
+                .setEmail("pretty_vasya@mail.com")
+                .setUserNumber("1234567890")
+                .selectGender("Female")
+                .submitForm()
+                .waitModalWindowIsOpened()
+                .checkModalWindowHasText(List.of("Василиса", "Премудрая", "1234567890", "Female"));
     }
 }
