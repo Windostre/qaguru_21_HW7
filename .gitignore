@@ -4,7 +4,6 @@
 *.class
 *.log
 *.error
-/build.gradle
 /gradlew
 /gradlew.bat
 /settings.gradle

@@ -17,10 +17,15 @@ public class TextBoxPage {
 
     public TextBoxPage openPage(String url) {
         Selenide.open(url);
+        return this;
+    }
+
+    public TextBoxPage removeBannerAndFooterFromPage() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
     }
+
     public TextBoxPage setFullName(String fullName) {
         fullNameInput.setValue(fullName);
         return this;

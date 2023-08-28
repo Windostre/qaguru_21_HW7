@@ -14,12 +14,10 @@ public class RegistrationFormTests extends TestBase{
 
     @Test
     void registrationFormSuccessTest() {
-//        String firstName = "Василиса",
-//                lastName = "Премудрая",
-//                email = "pretty_vasya@mail.com";
         registrationPage
                 .openPage(registrationPageUrl)
-                .waitUntilRegistrationPageIsLoaded()
+                .removeBannerAndFooterFromPage()
+                .waitUntilRegistrationPageIsLoaded("Student Registration Form")
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setEmail(email)
@@ -33,7 +31,7 @@ public class RegistrationFormTests extends TestBase{
                 .selectState("NCR")
                 .selectCity("Delhi")
                 .submitForm()
-                .waitModalWindowIsOpened()
+                .waitModalWindowIsOpened("Thanks for submitting the form")
                 .checkValueNextToColumnInTableInModalWindow("Student Name", "Василиса Премудрая")
                 .checkValueNextToColumnInTableInModalWindow("Student Email", email)
                 .checkValueNextToColumnInTableInModalWindow("Gender", "Female")
@@ -44,21 +42,21 @@ public class RegistrationFormTests extends TestBase{
                 .checkValueNextToColumnInTableInModalWindow("Picture", "test.jpg")
                 .checkValueNextToColumnInTableInModalWindow("Address", "Лукоморье, Дуб Зеленый, 1")
                 .checkValueNextToColumnInTableInModalWindow("State and City", "NCR Delhi");
-
     }
 
     @Test
     void registrationFormSuccessMinimalTest() {
         registrationPage
                 .openPage(registrationPageUrl)
-                .waitUntilRegistrationPageIsLoaded()
+                .removeBannerAndFooterFromPage()
+                .waitUntilRegistrationPageIsLoaded("Student Registration Form")
                 .setFirstName("Василиса")
                 .setLastName("Премудрая")
                 .setEmail("pretty_vasya@mail.com")
                 .setUserNumber("1234567890")
                 .selectGender("Female")
                 .submitForm()
-                .waitModalWindowIsOpened()
+                .waitModalWindowIsOpened("Thanks for submitting the form")
                 .checkModalWindowHasText(List.of("Василиса", "Премудрая", "1234567890", "Female"));
     }
 }

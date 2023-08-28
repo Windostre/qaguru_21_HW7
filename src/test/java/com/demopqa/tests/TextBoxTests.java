@@ -11,6 +11,7 @@ public class TextBoxTests extends TestBase {
     void testBoxTests() {
         textBoxPage
                 .openPage(textBoxPageUrl)
+                .removeBannerAndFooterFromPage()
                 .setFullName("Sveta Ivanova")
                 .setEmail("ivanova@somemail.ru")
                 .setCurrentAddress("Pushkina ul., 34")
@@ -19,6 +20,5 @@ public class TextBoxTests extends TestBase {
                 .checkThatTextBoxHasText("ivanova@somemail.ru")
                 .checkThatTextBoxHasText("Pushkina ul., 34")
                 .checkThatTextBoxHasText("Gogol-Mogol ul., 16a");
-
     }
 }

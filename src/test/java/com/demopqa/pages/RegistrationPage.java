@@ -80,9 +80,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage waitModalWindowIsOpened() {
+    public RegistrationPage waitModalWindowIsOpened(String expectedText) {
         modalWindow.should(Condition.appear);
-        modalWindowHeader.shouldHave(text("Thanks for submitting the form"));
+        modalWindowHeader.shouldHave(text(expectedText));
         return this;
     }
 
@@ -99,12 +99,17 @@ public class RegistrationPage {
 
     public RegistrationPage openPage(String url) {
         Selenide.open(url);
+        return this;
+    }
+
+    public RegistrationPage removeBannerAndFooterFromPage() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
     }
-    public RegistrationPage waitUntilRegistrationPageIsLoaded() {
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+
+    public RegistrationPage waitUntilRegistrationPageIsLoaded(String expectedText) {
+        $(".practice-form-wrapper").shouldHave(text(expectedText));
         return this;
     }
 
